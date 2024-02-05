@@ -1,0 +1,150 @@
+body {
+  background: #f0ecff;
+}
+.swal-modal {
+  padding: 60px 0;
+}
+.swal-modal .swal-footer {
+  display: none;
+}
+/* Calculated variables. */
+:root {
+  --size: 2.5em;
+  --thickness: 0.5em;
+  --lat: calc((var(--size) - var(--thickness)) / 2);
+  --offset: calc(var(--lat) - var(--thickness));
+}
+
+.loader {
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  transform: rotate(165deg);
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: var(--thickness);
+  height: var(--thickness);
+  border-radius: calc(var(--thickness) / 2);
+  transform: translate(-50%, -50%);
+}
+
+.loader:before {
+  animation: before 2s infinite;
+}
+
+.loader:after {
+  animation: after 2s infinite;
+}
+
+@keyframes before {
+  0% {
+    width: var(--thickness);
+    box-shadow: var(--lat) calc(-1 * var(--offset)) hsla(337, 84%, 48%, 0.75),
+      calc(-1 * var(--lat)) var(--offset) hsla(41, 82%, 52%, 0.75);
+  }
+  35% {
+    width: var(--size);
+    box-shadow: 0 calc(-1 * var(--offset)) hsla(337, 84%, 48%, 0.75),
+      0 var(--offset) hsla(41, 82%, 52%, 0.75);
+  }
+  70% {
+    width: var(--thickness);
+    box-shadow: calc(-1 * var(--lat)) calc(-1 * var(--offset)) hsla(337, 84%, 48%, 0.75),
+      var(--lat) var(--offset) hsla(41, 82%, 52%, 0.75);
+  }
+  100% {
+    box-shadow: var(--lat) calc(-1 * var(--offset)) hsla(337, 84%, 48%, 0.75),
+      calc(-1 * var(--lat)) var(--offset) hsla(41, 82%, 52%, 0.75);
+  }
+}
+
+@keyframes after {
+  0% {
+    height: var(--thickness);
+    box-shadow: var(--offset) var(--lat) hsla(160, 50%, 48%, 0.75),
+      calc(-1 * var(--offset)) calc(-1 * var(--lat)) hsla(41, 82%, 52%, 0.75);
+  }
+  35% {
+    height: var(--size);
+    box-shadow: var(--offset) 0 hsla(160, 50%, 48%, 0.75),
+      calc(-1 * var(--offset)) 0 hsla(41, 82%, 52%, 0.75);
+  }
+  70% {
+    height: var(--thickness);
+    box-shadow: var(--offset) calc(-1 * var(--lat)) hsla(160, 50%, 48%, 0.75),
+      calc(-1 * var(--offset)) var(--lat) hsla(41, 82%, 52%, 0.75);
+  }
+  100% {
+    box-shadow: var(--offset) var(--lat) hsla(160, 50%, 48%, 0.75),
+      calc(-1 * var(--offset)) calc(-1 * var(--lat)) hsla(41, 82%, 52%, 0.75);
+  }
+}
+
+/* Attempt to center the whole thing! */
+html,
+body {
+  height: 100%;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - var(--size) / 2);
+  left: calc(50% - var(--size) / 2);
+}
+#addPostBtn:before {
+  content: "Add Post";
+  position: absolute;
+  background-color: #198754;
+  width: fit-content;
+  font-size: 13px;
+  left: -73.7px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px 5px;
+  font-weight: 500;
+  border-radius: 8px;
+  /* transition: .3s ease-in; */
+  visibility: hidden;
+}
+#addPostBtn:after {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 10px solid;
+  border-color: transparent transparent transparent #198754;
+  /* transition: .3s; */
+  visibility: hidden;
+}
+#addPostBtn:hover:after,
+#addPostBtn:hover:before {
+  visibility: visible;
+} 
+@media (max-width: 767px) {
+  .container-fluid,
+   .container {
+    width: 100% !important;
+  }
+  #addPostBtn {
+    right: 5px!important;
+  }
+  #imageUser {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  #userInfo p {
+    font-size: 16px !important;
+  }
+  #numberOfPosts,
+  #numberOfComments {
+    font-size: 30px !important;
+  }
+}

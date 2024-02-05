@@ -1,0 +1,18 @@
+{
+  "name": "a-soical-net.-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "logic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "bootstrap": "^5.3.2",
+    "feather-icons": "^4.29.1",
+    "infinite-scroll": "^4.0.1",
+    "sweetalert": "^2.1.2"
+  }
+}
